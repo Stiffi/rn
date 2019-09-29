@@ -1,8 +1,8 @@
 {
-    "hostType": "tunnel",
-    "lanType": "ip",
-    "dev": true,
-    "minify": false,
-    "urlRandomness": "fc-hwa",
-    "https": false
+  "hostType": "tunnel",
+  "lanType": "ip",
+  "dev": true,
+  "minify": false,
+  "urlRandomness": "fc-hwa",
+  "https": false
 }
