@@ -7,36 +7,40 @@ import {
     View,
     FlatList
 } from 'react-native';
+import GoalItem from './components/GoalItem/GoalItem';
+import GoalInput from './components/GoalInput/GoalInput';
 
 export default function App() {
-    const [enteredGoal, setEnteredGoal] = useState('');
     const [courseGoals, setCourseGoals] = useState([]);
+    const [isAddMode, setIsAddMode] = useState(false);
 
-    const goalInputHandler = (enteredText: string) => {
-        setEnteredGoal(enteredText);
+    const addGoalHandler = (enteredGoal: string) => {
+        setCourseGoals(currentGoals => [...currentGoals, enteredGoal]);
+        setIsAddMode(false);
     };
 
-    const addGoalHandler = () => {
-        setCourseGoals(currentGoals => [...currentGoals, enteredGoal]);
+    const removeGoalHandler = index => {
+        setCourseGoals(currentGoals =>
+            currentGoals.filter((goal, goalIndex) => goalIndex !== index)
+        );
+    };
+
+    const cancelGoalHandler = () => {
+        setIsAddMode(false);
     };
 
     return (
         <View style={styles.screen}>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    placeholder="Course goal"
-                    style={styles.input}
-                    onChangeText={goalInputHandler}
-                    value={enteredGoal}
-                />
-                <Button title="Add" onPress={addGoalHandler} />
-            </View>
+            <Button title="Add New Goal" onPress={() => setIsAddMode(true)} />
+            <GoalInput onCancel={cancelGoalHandler} visible={isAddMode} onAddGoal={addGoalHandler} />
             <FlatList
                 data={courseGoals}
+                keyExtractor={(item, index) => index.toString()}
                 renderItem={listItem => (
-                    <View key={listItem.index} style={styles.listItem}>
-                        <Text>{listItem.item}</Text>
-                    </View>
+                    <GoalItem
+                        onDelete={() => removeGoalHandler(listItem.index)}
+                        title={listItem.item}
+                    />
                 )}
             />
         </View>
@@ -46,23 +50,5 @@ export default function App() {
 const styles = StyleSheet.create({
     screen: {
         padding: 50
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    },
-    input: {
-        width: '80%',
-        borderColor: '#000000',
-        borderWidth: 1,
-        padding: 10
-    },
-    listItem: {
-        padding: 10,
-        marginVertical: 10,
-        backgroundColor: '#cccccc',
-        borderColor: '#000000',
-        borderWidth: 1
     }
 });
