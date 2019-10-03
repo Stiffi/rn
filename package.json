@@ -1,41 +1,21 @@
 {
-    "main": "node_modules/expo/AppEntry.js",
-    "scripts": {
-        "start": "expo start",
-        "android": "expo start --android",
-        "ios": "expo start --ios",
-        "web": "expo start --web",
-        "eject": "expo eject",
-        "prettier:write": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}",
-        "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx ./"
-    },
-    "dependencies": {
-        "@react-native-community/eslint-config": "0.0.5",
-        "eslint": "^6.4.0",
-        "expo": "^35.0.0",
-        "react": "16.8.3",
-        "react-dom": "16.8.3",
-        "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-        "react-native-web": "^0.11.7"
-    },
-    "devDependencies": {
-        "@types/react": "^16.8.23",
-        "@types/react-native": "^0.57.65",
-        "@typescript-eslint/eslint-plugin": "^2.3.1",
-        "babel-preset-expo": "^7.0.0",
-        "eslint-config-airbnb-typescript": "^5.0.0",
-        "eslint-config-prettier": "^6.3.0",
-        "eslint-plugin-import": "^2.18.2",
-        "eslint-plugin-jsx-a11y": "^6.2.3",
-        "eslint-plugin-react": "^7.14.3",
-        "husky": "^3.0.7",
-        "pretty-quick": "^1.11.1",
-        "typescript": "^3.4.5"
-    },
-    "private": true,
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged && npm run lint"
-        }
-    }
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "expo": "^33.0.0",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.1.1"
+  },
+  "private": true
 }
